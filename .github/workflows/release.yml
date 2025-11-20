@@ -33,4 +33,3 @@ jobs:
             --title="$tag" \
             --draft \
             main.js manifest.json styles.css
-출처: https://uppinote.tistory.com/6 [유피노트:티스토리]
