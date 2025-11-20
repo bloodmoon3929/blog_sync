@@ -3,8 +3,9 @@
 	"name": "Blog Sync",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Obsidian 문서를 블로그로 자동 동기화합니다. Git 및 SFTP 지원.",
+	"description": "Synchronize Obsidian documents to blogs, using Git and SMB methods",
 	"author": "Bloodmoon3929",
 	"authorUrl": "https://github.com/bloodmoon3929",
 	"isDesktopOnly": false
 }
+ 
