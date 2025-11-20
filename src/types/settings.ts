@@ -2,6 +2,8 @@
 
 export type SyncStatus = 'idle' | 'syncing' | 'success' | 'error';
 
+export type NotificationType = 'info' | 'success' | 'warning' | 'error';
+
 export interface PublishedNoteInfo {
     hash: string;
     timestamp: number;

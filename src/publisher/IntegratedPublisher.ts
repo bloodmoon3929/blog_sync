@@ -88,14 +88,14 @@ export class IntegratedPublisher {
             if (this.githubPublisher && (settings.publishTarget === 'github' || settings.publishTarget === 'both')) {
                 new Notice('📝 GitHub에 발행 중...');
                 try {
-                    const githubResult = await this.githubPublisher.publishFile(file);
+                    const githubSuccess = await this.githubPublisher.publishFile(file);
                     result.github = {
-                        success: githubResult.success,
-                        filesPublished: githubResult.filesPublished,
-                        commitSha: githubResult.commitSha
+                        success: githubSuccess,
+                        filesPublished: githubSuccess ? 1 : 0,
+                        commitSha: undefined
                     };
-                    
-                    if (githubResult.success) {
+
+                    if (githubSuccess) {
                         new Notice('✅ GitHub 발행 완료!');
                     } else {
                         result.errors?.push('GitHub 발행 실패');
@@ -170,7 +170,7 @@ export class IntegratedPublisher {
             }
 
             // 최종 성공 여부
-            result.success = (result.github?.success || result.localServer?.success) && (result.errors?.length === 0);
+            result.success = (Boolean(result.github?.success) || Boolean(result.localServer?.success)) && (result.errors?.length === 0);
 
             if (result.success) {
                 new Notice('🎉 발행 완료!');
@@ -206,15 +206,15 @@ export class IntegratedPublisher {
             if (this.githubPublisher && (settings.publishTarget === 'github' || settings.publishTarget === 'both')) {
                 new Notice('📝 GitHub에 발행 중...');
                 try {
-                    const githubResult = await this.githubPublisher.publishFiles(files);
+                    const githubSuccess = await this.githubPublisher.publishFiles(files);
                     result.github = {
-                        success: githubResult.success,
-                        filesPublished: githubResult.filesPublished,
-                        commitSha: githubResult.commitSha
+                        success: githubSuccess,
+                        filesPublished: githubSuccess ? files.length : 0,
+                        commitSha: undefined
                     };
-                    
-                    if (githubResult.success) {
-                        new Notice(`✅ GitHub에 ${githubResult.filesPublished}개 파일 발행 완료!`);
+
+                    if (githubSuccess) {
+                        new Notice(`✅ GitHub에 ${files.length}개 파일 발행 완료!`);
                     }
                 } catch (error) {
                     console.error('GitHub publish error:', error);
@@ -288,7 +288,7 @@ export class IntegratedPublisher {
             }
 
             // 최종 성공 여부
-            result.success = (result.github?.success || result.localServer?.success) && (result.errors?.length === 0);
+            result.success = (Boolean(result.github?.success) || Boolean(result.localServer?.success)) && (result.errors?.length === 0);
 
             if (result.success) {
                 new Notice('🎉 모든 파일 발행 완료!');
