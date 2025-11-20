@@ -1,9 +1,9 @@
 {
-	"id": "obsidian-sync-blog",
+	"id": "blog_sync",
 	"name": "Blog Sync",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Synchronize Obsidian documents to blogs, using Git and SMB methods",
+	"description": "Synchronize documents to blogs, using Git and SMB methods.",
 	"author": "Bloodmoon3929",
 	"authorUrl": "https://github.com/bloodmoon3929",
 	"isDesktopOnly": false
